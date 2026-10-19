@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foco — Controle de tarefas</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Foco</h1>
+      <p>Um jeito simples de organizar suas tarefas.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="auth-grid">
+      <section class="panel auth-panel" id="entrar">
+        <h2>Entrar</h2>
+        <form id="form-login">
+          <p><label for="email-login">E-mail</label><input id="email-login" name="email" type="email" autocomplete="email" required></p>
+          <p><label for="senha-login">Senha</label><input id="senha-login" name="senha" type="password" autocomplete="current-password" required></p>
+        <button type="submit">Entrar</button>
+          <p class="form-feedback" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel auth-panel" id="cadastro">
+        <h2>Criar conta</h2>
+        <form id="form-cadastro">
+          <p><label for="nome-cadastro">Nome</label><input id="nome-cadastro" name="nome" autocomplete="name" required></p>
+          <p><label for="email-cadastro">E-mail</label><input id="email-cadastro" name="email" type="email" autocomplete="email" required></p>
+          <p><label for="senha-cadastro">Senha</label><input id="senha-cadastro" name="senha" type="password" minlength="4" autocomplete="new-password" required></p>
+          <button type="submit">Criar conta</button>
+          <p class="form-feedback" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
+
+    <section class="tasks-section" id="tarefas" hidden>
+      <div class="tasks-heading">
+        <div>
+          <h2>Minhas tarefas</h2>
+          <p>Conectado como <strong id="usuario-conectado"></strong></p>
+        </div>
+        <button class="button-secondary" id="botao-sair" type="button">Sair</button>
+      </div>
+
+      <section class="summary panel" aria-label="Resumo das tarefas">
+        <h3>Resumo</h3>
+        <ul class="summary-list">
+          <li><span>Total de tarefas</span><strong id="total-tarefas">0</strong></li>
+          <li><span>Em andamento</span><strong id="andamento-tarefas">0</strong></li>
+          <li><span>Concluídas</span><strong id="concluidas-tarefas">0</strong></li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h3>Cadastrar tarefa</h3>
+        <form id="form-tarefa">
+          <p><label for="titulo-tarefa">Título (obrigatório):</label><br><input id="titulo-tarefa" name="titulo" maxlength="100" required></p>
+          <p><label for="descricao-tarefa">Descrição:</label><br><textarea id="descricao-tarefa" name="descricao" rows="4" maxlength="1000"></textarea></p>
+          <p><label for="prazo-tarefa">Prazo:</label><br><input id="prazo-tarefa" name="prazo" type="date"></p>
+          <p>
+            <label for="status-tarefa">Status:</label><br>
+            <select id="status-tarefa" name="status">
+              <option value="PENDENTE">Pendente</option>
+              <option value="EM_ANDAMENTO">Em andamento</option>
+              <option value="CONCLUIDA">Concluída</option>
+            </select>
+          </p>
+          <button type="submit">Salvar tarefa</button>
+          <p class="form-feedback" id="tarefa-feedback" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h3>Lista de tarefas</h3>
+        <form id="form-filtro">
+          <label for="filtro-status">Filtrar por status:</label>
+          <select id="filtro-status" name="status">
+            <option value="TODAS">Todos os status</option>
+            <option value="PENDENTE">Pendentes</option>
+            <option value="EM_ANDAMENTO">Em andamento</option>
+            <option value="CONCLUIDA">Concluídas</option>
+          </select>
+          <button type="submit">Filtrar</button>
+        </form>
+        <ul class="task-list" id="lista-tarefas" aria-live="polite"></ul>
+        <p class="empty-state" id="estado-vazio">Nenhuma tarefa cadastrada.</p>
+      </section>
+    </section>
+
+    <p class="disclaimer">Demonstração: contas e tarefas ficam apenas nesta página e são apagadas ao atualizá-la. Não use uma senha real.</p>
+  </main>
+</body>
+</html>
